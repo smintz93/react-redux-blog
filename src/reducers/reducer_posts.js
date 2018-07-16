@@ -7,6 +7,7 @@ export default function(state = {} , action){
 	// console.log(action.payload.data); //[post1, post2]
 	// // can you lodash .mapKeys
 	return _.mapKeys(action.payload.data, 'id');
+
 	default:
 		return state;
 	}
