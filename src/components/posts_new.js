@@ -8,6 +8,7 @@ class PostsNew extends Component {
 		return (
 			<div>
 				<input 
+					type="text"
 					// field.input is an object which contains object, props, and value
 					{...field.input}
 				/>
