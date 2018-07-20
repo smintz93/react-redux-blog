@@ -43,12 +43,20 @@ class PostsNew extends Component {
 }
 
 // values is what user enters into the form
+// called by reduxForm when user submits form
 validate = (values) => {
 	// need to return an object
 	const errors = {} 
 	// validate inputs from values
-
-
+	if (!values.title) {
+		errors.title = "Enter a title";
+	}
+	if (!values.categories) {
+		errors.categories = "Enter some categories";
+	}
+	if (!values.content) {
+		errors.content = "Enter some content please";
+	}
 	// if errors is empty form is fine to submit.
 	// if erros has any props, redux form assumes form is invalid
 	return errors; 	
