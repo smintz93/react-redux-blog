@@ -14,7 +14,9 @@ class PostsNew extends Component {
 					// field.input is an object which contains object, props, and value
 					{...field.input}
 				/>
+				{field.meta.error}
 			</div>
+			// redux form looks at name property 
 		)
 	}
 
@@ -44,7 +46,7 @@ class PostsNew extends Component {
 
 // values is what user enters into the form
 // called by reduxForm when user submits form
-validate = (values) => {
+function validate(values) {
 	// need to return an object
 	const errors = {} 
 	// validate inputs from values
