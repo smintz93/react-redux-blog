@@ -3,16 +3,31 @@ import { Field, reduxForm } from 'redux-form';
 // reduxForm allowing component to talk to redux store
 
 class PostsNew extends Component {
-	render(){
+	renderTitleField = (field) => {
+		// so field knows its responsible for text input
 		return (
 			<div>
-				PostsNew!
+				<input 
+					// field.input is an object which contains object, props, and value
+					{...field.input}
+				/>
 			</div>
+		)
+	}
+
+	render(){
+		return (
+			<form>
+				<Field 
+					name="title"
+					// supposed to be a function that returns jsx
+					component={this.renderTitleField}
+				/>
+			</form>	
 		)
 	}
 }
 
 export default reduxForm({
-	// pass a function
-	form: 'PostsNewForm'
+	form: 'PostsNewForm' 	// pass a function helper (just like connect) // unique string
 })(PostsNew); 
