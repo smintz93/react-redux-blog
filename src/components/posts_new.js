@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 // reduxForm allowing component to talk to redux store
 
 class PostsNew extends Component {
@@ -30,7 +32,8 @@ class PostsNew extends Component {
 	onSubmit = (values) => {
 		// this === compononet
 		// using arrow function instead
-		console.log(values)
+		// console.log(values)
+		this.props.createPost(values);
 	}
 
 	render(){
@@ -60,7 +63,6 @@ class PostsNew extends Component {
 		)
 	}
 }
-
 // values is what user enters into the form
 // called by reduxForm when user submits form
 function validate(values) {
@@ -81,8 +83,11 @@ function validate(values) {
 	return errors; 	
 }
 
+// multiple connect helpers
 export default reduxForm({
 	validate,
 	form: 'PostsNewForm' 	// pass a function helper (just like connect) // unique string
-})(PostsNew); 
+})(
+	connect(null,{ createPost }) (PostsNew)
+);
 

@@ -23,5 +23,5 @@ export function createPost(values){
 	return {
 		type: CREATE_POST,
 		payload: request
-	}
+	};
 }
