@@ -14,7 +14,7 @@ class PostsNew extends Component {
 					// field.input is an object which contains object, props, and value
 					{...field.input}
 				/>
-				{field.meta.error}
+				{field.meta.touched ? field.meta.error : "" }
 			</div>
 			// redux form looks at name property 
 		)
