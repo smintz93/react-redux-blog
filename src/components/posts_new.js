@@ -19,10 +19,17 @@ class PostsNew extends Component {
 			// redux form looks at name property 
 		)
 	}
+	onSubmit = (values) => {
+		// this === compononet
+		// using arrow function instead
+		console.log(values)
+	}
 
 	render(){
+		const { handleSubmit } = this.props;
+
 		return (
-			<form>
+			<form onSubmit={handleSubmit(this.onSubmit)}>
 				<Field 
 					label="Title For Post"
 					name="title"
