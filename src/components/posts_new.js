@@ -33,7 +33,10 @@ class PostsNew extends Component {
 		// this === compononet
 		// using arrow function instead
 		// console.log(values)
-		this.props.createPost(values);
+			// navagate back to the main list of posts 
+		this.props.createPost(values, () => {
+			this.props.history.push('/');
+		});
 	}
 
 	render(){
