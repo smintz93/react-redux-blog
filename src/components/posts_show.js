@@ -5,11 +5,12 @@ import { fetchPost } from '../actions';
 class PostsShow extends Component {
 	componentDidMount(){
 		// from react-router
-		this.props.match.params.id;
-		this.props.fetchPost();
+		const { id } = this.props.match.params;
+		this.props.fetchPost(id);
 	}
 
 	render() {
+		
 		return (
 		<div>
 			Posts Show!
@@ -18,8 +19,10 @@ class PostsShow extends Component {
 	};
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts }, ownProps) {
+	// only receive one post not the big list
+	return { post: posts[ownProps.match.params.id] }
 
 }
 
-export default connect(null, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPost })(PostsShow);
