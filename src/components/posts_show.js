@@ -10,13 +10,21 @@ class PostsShow extends Component {
 	}
 
 	render() {
+		const { post } = this.props
+
+		// its undefined first time it renders
+		if (!post) {
+			return <div>Loading...</div>
+		}
 		
 		return (
 		<div>
-			Posts Show!
+			<h3>{post.title}</h3>
+			<h6>Categories: {post.categories}</h6>
+			<p>{post.content}</p>
 		</div>		
 		);
-	};
+	}
 }
 
 function mapStateToProps({ posts }, ownProps) {
